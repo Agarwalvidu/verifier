@@ -1,9 +1,14 @@
 pipeline{
-    agent any;
+    agent { label "dev" }
     stages{
         stage("Code Clone"){
             steps{
                 git url: "https://github.com/ananyaamishraa/verifier.git", branch: "main"
+            }
+        }
+        stage("Trivy File System Scan"){
+            steps{
+                sh "sudo trivy fs . -o results.json"
             }
         }
         stage("Build"){
@@ -31,6 +36,26 @@ pipeline{
                     sh "docker run -d -p 3000:3000 --name verifier-app ${env.DockerHubUser}/verifier:latest"
                 }
             }
+        }
+    }
+    post{
+        success{
+            emailext (
+                to: "ananyamishra6725@gmail.com",
+                subject: "Jenkins Build Successful",
+                body: "Build Successful",
+                from: "ananyamishra6725@gmail.com",
+                mimeType: 'text/html'
+            )
+        }
+        failure{
+            emailext (
+                to: "ananyamishra6725@gmail.com",
+                subject: "Jenkins Build Failed", 
+                body: "Build Failed",
+                from: "ananyamishra6725@gmail.com",
+                mimeType: 'text/html'
+            )
         }
     }
 }
