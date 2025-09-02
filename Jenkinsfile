@@ -6,6 +6,11 @@ pipeline{
                 git url: "https://github.com/ananyaamishraa/verifier.git", branch: "main"
             }
         }
+        stage("Trivy File System Scan"){
+            steps{
+                sh "sudo trivy fs . -o results.json"
+            }
+        }
         stage("Build"){
             steps{
                 sh "docker build -t verifier:latest ."
