@@ -1,0 +1,13 @@
+kind: Pod
+apiVersion: v1
+
+metadata:
+  name: verifier-pod
+  namespace: verifier-ns
+
+spec:
+  containers:
+  - name: verifier
+    image: ananyaamishraa/verifier
+    ports:
+    - containerPort: 3000
