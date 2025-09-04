@@ -8,8 +8,8 @@ metadata:
     app: verifier
 
 spec:
-  replicas: 1
-  selectors:
+  replicas: 2
+  selector:
     matchLabels:
       app: verifier
 
@@ -24,3 +24,11 @@ spec:
         image: ananyaamishraa/verifier
         ports:
         - containerPort: 3000
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+
+          limits:
+            cpu: 200m
+            memory: 512Mi
