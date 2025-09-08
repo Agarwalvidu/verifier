@@ -106,19 +106,19 @@ kubectl version --client
 
 ## 4. Apply Kubernetes Configurations:  
 ```
-kubectl apply -f namespace.yml
-kubectl apply -f pod.yml
-kubectl apply -f deployment.yml
-kubectl apply -f service.yml
-kubectl apply -f hpa.yml
+kubectl apply -f k8s/namespace.yml
+kubectl apply -f k8s/pod.yml
+kubectl apply -f k8s/deployment.yml
+kubectl apply -f k8s/service.yml
+kubectl apply -f k8s/hpa.yml
 ```
 OR  
 ```
-kubectl apply -f namespace.yml
-kubectl apply -f pod.yml
-kubectl apply -f deployment.yml
-kubectl apply -f service.yml
-kubectl apply -f vpa.yml
+kubectl apply -f k8s/namespace.yml
+kubectl apply -f k8s/pod.yml
+kubectl apply -f k8s/deployment.yml
+kubectl apply -f k8s/service.yml
+kubectl apply -f k8s/vpa.yml
 ```
 
 ## 5. Verify the Cluster:  
